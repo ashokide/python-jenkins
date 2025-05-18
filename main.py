@@ -1,8 +1,11 @@
+import sys
 # main.py
 def sum(value1, value2):
     """
     This function takes two values and returns their sum.
     """
+    value1 = float(value1)
+    value2 = float(value2)
     return value1 + value2
 
-print(sum(1, 2))
+print("Sum : ", sum(sys.argv[1], sys.argv[2]))
