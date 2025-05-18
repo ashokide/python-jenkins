@@ -1,0 +1,11 @@
+# Python virtual environment
+bin/
+include/
+lib/
+pyvenv.cfg
+
+# Python cache files
+__pycache__/
+
+# pytest cache
+.pytest_cache/
