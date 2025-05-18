@@ -14,5 +14,14 @@ pipeline {
                 sh 'python3 -m pytest test.py'
             }
         }
+        post {
+            success {
+                echo "Test Stage completed successfully"
+            }
+
+            failure {
+                echo "Test Stage failed"
+            }
+        }
     }
 }
