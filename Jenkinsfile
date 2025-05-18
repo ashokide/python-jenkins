@@ -14,32 +14,16 @@ pipeline {
                 sh 'python3 -m pytest test.py'
             }
         }
-        stage ('Build Docker Image'){
+        stage ('Build and Push Docker Image'){
             steps {
                 script{
-                    docker.withRegistry('https://registry.example.com', '295939a3-9ace-404f-b31b-1bb41723ebdd	') {
-                        def pythonJenkins = docker.build("python-jenkins:${env.BUILD_ID}")
-                        pythonJenkins.push()
+                    withDockerRegistry(credentialsId: '295939a3-9ace-404f-b31b-1bb41723ebdd') {
+                        sh "docker build -t ashok2001/python-jenkins:${env.BUILD_ID}"
+                        sh "docker push ashok2001/python-jenkins:${env.BUILD_ID}"
+                        
                     }
                 }
             }
         }
-        stage ('Push to Docker Hub') {
-            steps {
-                echo "Pushing to Docker Hub"
-                
-            }
-
-        }
-    }
-
-    post {
-            success {
-                echo "Test Stage completed successfully"
-            }
-
-            failure {
-                echo "Test Stage failed"
-            }
     }
 }
