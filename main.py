@@ -5,4 +5,3 @@ def sum(value1, value2):
     return value1 + value2
 
 print(sum(1, 2))
-print(sum(1.5, 2.5))
