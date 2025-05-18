@@ -17,7 +17,7 @@ pipeline {
         stage ('Build and Push Docker Image'){
             steps {
                 script{
-                    withDockerRegistry(credentialsId: '295939a3-9ace-404f-b31b-1bb41723ebdd') {
+                    withDockerRegistry(credentialsId: '295939a3-9ace-404f-b31b-1bb41723ebdd', url: 'https://registry.hub.docker.com')) {
                         sh "docker build -t ashok2001/python-jenkins:${env.BUILD_ID}"
                         sh "docker push ashok2001/python-jenkins:${env.BUILD_ID}"
                         
